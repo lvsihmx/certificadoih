@@ -1,238 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificación de Inglés - Universidad Humanitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Colores Sugerida: 
+           - Azul Primario (Humanitas/IH): #004d99 (Oscuro)
+           - Rojo de Acento (Urgencia/Énfasis): #cc0033
+           - Fondo Claro: #f8f9fa
+           - Contenido Blanco: #ffffff
+        */
+        :root {
+            --primary-color: #004d99;
+            --accent-color: #cc0033;
+            --light-bg: #f8f9fa;
+            --text-dark: #343a40;
+            --text-light: #6c757d;
+        }
 
-<title>certificado</title>
-<link rel="stylesheet" href="https://lvsihmx.github.io/certificadoih/img/main.css">
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
 
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+        }
+
+        .header img {
+            height: auto;
+            max-width: 48%;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        h3 {
+            color: var(--text-dark);
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-top: 15px;
+            text-align: justify;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-green {
+            background-color: #28a745; /* Verde Bootstrap más estándar */
+            color: white;
+            border: none;
+        }
+
+        .btn-green:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .step-card {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            transition: box-shadow 0.3s;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 30px;
+            overflow: hidden; /* Para que el border-radius funcione */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-top: none;
+        }
+        
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f6f9;
+        }
+
+        .section-header {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed var(--text-light);
+        }
+        
+        .results-section {
+            background-color: var(--light-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .header img {
+                max-width: 60%;
+            }
+        }
+    </style>
+</head>
 <body>
 
+<div class="container">
 
-    <img src="https://lvsihmx.github.io/certificadoih/img/LOGOIHB.jpg" width="455" height="156" />
+    <div class="header">
+        <img src="https://lvsihmx.github.io/certificadoih/img/LOGOIHB.jpg" alt="Logo International House" />
+        <img src="https://lvsihmx.github.io/certificadoih/img/logohum2.png" alt="Logo Universidad Humanitas" />
+    </div>
 
-    <img src="https://lvsihmx.github.io/certificadoih/img/logohum2.png" width="177" height="145" style="float:right"/>
-    
-    
-    <body bgcolor="white" text="" marginwidth="100" marginheight="80">
-        
-        
-    <h1><center>CERTIFICACI&Oacute;N DE INGL&Eacute;S</center></h1>
-                
-    <h1><center>Convocatoria Urgente </center></h1>
-    
-    
-    <h2><center>UNIVERSIDAD HUMANITAS </center></h2><br>
-    <h3><p>Estimados alumnos de Universidad Humanitas te damos la bienvenida a tu certificaci&oacute;n de ingl&eacute;s recuerda que este paso es importante dentro de tu trayectoria educativa y profesional.</p>
-    
-        <p> Antes de continuar revisa <a href="https://lvsihmx.github.io/certificadoih/img/tyc23.pdf" class="btn btn-green">Terminos y condiciones</a> y si estas de acuerdo continua con el proceso de lo contrario no realices niinguna acción. </p><p>Debes ingresar al grupo de whatsapp antes que nada y estar al pendiente en este se darán todas las indicaciones.</p></h3>
-        <p> Realiza tu inscripci&oacute;n en tres sencillos pasos:</p></h3>
-       
+    <div class="title-section">
+        <h1>CERTIFICACIÓN DE INGLÉS</h1>
+        <h2 style="color: var(--accent-color);">CONVOCATORIA URGENTE</h2>
+        <h2 style="color: var(--primary-color);">UNIVERSIDAD HUMANITAS</h2>
+    </div>
 
-    <div class="grid">    
+    <div class="intro-text">
+        <h3>
+            <p>Estimados alumnos de Universidad Humanitas, les damos la bienvenida a su certificación de inglés, un paso crucial en su trayectoria educativa y profesional.</p>
+            <p><strong>ATENCIÓN:</strong> Antes de continuar, revisen los <a href="https://lvsihmx.github.io/certificadoih/img/tyc23.pdf" class="btn btn-green" style="margin: 0; padding: 5px 10px;">Términos y condiciones</a>. Si están de acuerdo, procedan con la inscripción. Si no están de acuerdo, no realicen ninguna acción.</p>
+            <p>Es indispensable ingresar al grupo de WhatsApp. Manténganse al pendiente, ya que a través de este medio se darán todas las indicaciones oficiales.</p>
+            <p style="font-size: 1.2em; font-weight: 700; color: var(--accent-color);">Realicen su inscripción en tres sencillos pasos:</p>
+        </h3>
+    </div>
 
-
-
-
-
-
-
-        <div>
-
-            <strong>1.-Ingresa al grupo de whatsapp.Cada convocatoria tiene un grupo exclusivo,solo debes quedarte en el grupo de tu fecha, si estan en varios te puedes confundir y si duplicas tu resgistro el sistema lo anula.</strong>
-            <p>
-         </p>
-        <p>Debes estar pendiente del grupo ya que entre dos y tres días después de la última fecha de pago se solicitaran tus datos, si no los mandas por seguridad para que no pierdas el examen no se te podrá inscribir.
-	
-         </p>
-    <p>
-            
-            <a href=" https://chat.whatsapp.com/IITj7VnEY6M67Miya5ait5?mode=ems_copy_c"class="btn btn-green">Da click aquí para ingresar al grupo convocatoria urgente</a>
-            
-            </p>
-        
-                
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-header">
+                <span class="step-number">1</span>
+                <span class="step-title">Ingresa al Grupo de WhatsApp</span>
+            </div>
+            <p><strong>IMPORTANTE:</strong> Cada convocatoria tiene un grupo exclusivo. Solo deben permanecer en el grupo correspondiente a su fecha para evitar confusiones y la anulación de su registro por duplicidad.</p>
+            <p>La solicitud de sus datos (para inscripción oficial) se realizará **entre dos y tres días después de la última fecha de pago**.</p>
+            <a href=" https://chat.whatsapp.com/IITj7VnEY6M67Miya5ait5?mode=ems_copy_c" class="btn btn-green">ACCEDER AL GRUPO CONVOCATORIA URGENTE</a>
         </div>
 
-        <div>
-    
-            <p>
-                <strong>2.Realiza tu pago en una solo exhibición.Revisa las fechas en la parte de abajo.</strong>
-        
-        </p>
-            <p>
-          
-          <a href="https://pay.ihmexico.mx/servicios/universidad-humanitas/" class="btn btn-green">Ingresa al link de pago</a>
-        
-        
-          </p>
-          
+        <div class="step-card">
+             <div class="step-header">
+                <span class="step-number">2</span>
+                <span class="step-title">Realiza el Pago Único</span>
+            </div>
+            <p>El pago debe realizarse en una **sola exhibición**. Por favor, revisa cuidadosamente las fechas de vigencia en la sección de "Fechas y Precios" a continuación.</p>
+            <p style="color: var(--accent-color); font-weight: 700;">Asegúrate de guardar tu comprobante de pago.</p>
+            <a href="https://pay.ihmexico.mx/servicios/universidad-humanitas/" class="btn btn-green">IR AL LINK DE PAGO</a>
         </div>
 
+        <div class="step-card">
+            <div class="step-header">
+                <span class="step-number">3</span>
+                <span class="step-title">Registro y Documentos</span>
+            </div>
+            <p>Para este paso, ya debes contar con tu comprobante de pago y tu identificación oficial listos para adjuntar.</p>
+            <p>La guía de estudio se enviará a los pagos confirmados aproximadamente una semana después de la solicitud de datos por WhatsApp.</p>
+            <a href="https://forms.gle/W8JmVZyZWkJiCuUx8" class="btn btn-green">COMPLETAR REGISTRO AQUÍ</a>
+        </div>
+    </div>
 
-
-
-     <div>
-
-    <strong>3.Haz tu registro y sube los documentos (ya debes contar con tu pago e identificación).</strong>
-    
-  <p>
-          
-          <a href="https://forms.gle/W8JmVZyZWkJiCuUx8" class="btn btn-green">Da click para hacer tu registro</a>
-        
-          </p>
-      <p>Aproximadamente una semana después de que se piden los datos por el grupo se mandan la guía a los pagos confirmados. En el grupo se informará cuando se realice esta parte.
-	
-         </p>
-
-		
-</div>
-
-
-</div>
-
-
-
-<table style="width:100%">
-
-
-    <h2><center><u>Fechas y precios.</u></center></h2>
-
-    <th>
-    
-    Examen
-    </th>
-    
-    <th>
-    Precio
-    </th>
-    <th colspan="1">
-    Periodos de pago
-    </th>
-    <th>
-    Fecha del examen
-    </th>
-  
-      
- <tr>
-     
-    <td>
-   IELTS
-    </td>
-    
-    <td>
-    
-    $   5,760.00
-    
-    </td>
-
-<td> Del 15 al 30 de septiembre del 2025 $ 5,760.00 </td>
-
-    
-<td>ultimas 2 semanas de octubre.(sujeta a cambios, llega notificación a tu correo y se manda la lista al grupo de whatsapp). No se puede dar una fecha exacta hasta que sepamos cuantos candidatos se inscriben para solicitar la sesión. </td>
-
-    </tr>
-
+    <h2 class="section-header">Fechas y Precios</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Examen</th>
+                <th>Precio</th>
+                <th>Periodos de Pago</th>
+                <th>Fecha Estimada del Examen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>IELTS</td>
+                <td>$ 5,760.00</td>
+                <td>Del 15 al 30 de septiembre del 2025: $ 5,760.00</td>
+                <td>Últimas 2 semanas de octubre. (Sujeta a cambios. La fecha exacta se notifica por correo y WhatsApp tras confirmar la cantidad de candidatos).</td>
+            </tr>
+        </tbody>
     </table>
 
-
-
-
-<table style="width:100%">
-
-
-    <h2><center><u>Sobre la aplicación.</u></center></h2>
-
-    <th>
-    
-    Examen.
-    </th>
-    
-    <th>
-    Caracteristicas.
-    </th>
-    <th colspan="1">
-    Fecha de aplicación y sede.
-    </th>
-    <th>
-    Duración.
-    </th>
-  
-      
- <tr>
-     
-    <td>
-   Escrito
-    </td>
-    
-    <td>
-    Para KEY, PET, FCE Y CAE la fecha será la mencionada en la convocatoria y sujeta a cambios en caso de que no tengamos los candidatos mínimos para abrir la sesión.
-Para IELTS será en el intervalo de fechas mencionadas en la convocatoria y una semana antes de la fecha del examen se les dará la fecha y horario exacto.
-    
-    </td>
-
-
-
-<td> 3 días  antes de la fecha del examen te llega la confirmación en caso de que no la recibas manda mensaje al grupo de whatsapp.Las respuestas a los mensajes se darán en máximo 48 horas en horarios y días habiles.</td>
-
-    
-<td>La duración aproximada es entre 2 y 4 horas dependiendo del examen que presentes </td>
-
-    </tr>
-
-
-
-
-
-      
- <tr>
-     
-    <td>
-   ORAL
-    </td>
-    
-    <td>
-    Para KEY, PET, FCE Y CAE la mayoria de las veces es en la misma fecha del escrito, solo en algunos casos aislados es un día distinto.
-Para IELTS la mayoria de las veces es en la misma fecha del escrito, solo en algunos casos aislados es un día distinto.
-Una semana antes de la fecha del examen se les dará la fecha y horario exacto.
-    
-    </td>
-
-
-
-<td> 1 semana antes de la fecha del examen se mandarán al grupo la fecha y horarios confirmados.</td>
-
-
-    
-<td>La duración promedio es de 20 minutos dependiendo del examen que presentes.Tomando en cuenta desde el registro te toma 1 hora aproximadamente.</td>
-
-    </tr>
+    <h2 class="section-header">Detalles de la Aplicación</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Examen</th>
+                <th>Características Generales</th>
+                <th>Confirmación de Fecha y Sede</th>
+                <th>Duración Aproximada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Escrito</td>
+                <td>Para KEY, PET, FCE Y CAE, la fecha es la mencionada en la convocatoria (sujeta a cambios si no hay candidatos mínimos). Para IELTS, el examen es en el intervalo de fechas. La fecha y horario exactos se dan una semana antes.</td>
+                <td>Recibirás la confirmación 3 días antes del examen. Si no la recibes, envía mensaje al grupo de WhatsApp. Respuestas en máx. 48 horas (días hábiles).</td>
+                <td>Entre 2 y 4 horas, dependiendo del examen que presentes.</td>
+            </tr>
+            <tr>
+                <td>Oral</td>
+                <td>Para todos los exámenes (KEY, PET, FCE, CAE, IELTS), generalmente coincide con la fecha del escrito, aunque en casos aislados puede ser un día distinto. El horario exacto se dará una semana antes.</td>
+                <td>Fecha y horarios confirmados se enviarán al grupo de WhatsApp 1 semana antes del examen.</td>
+                <td>20 minutos en promedio (el proceso completo desde el registro toma aproximadamente 1 hora).</td>
+            </tr>
+        </tbody>
     </table>
 
-    <p>
-     
+    <h2 class="section-header">Entrega de Certificado y Resultados (IELTS)</h2>
+    <div class="results-section">
+        <p>Una vez realizado el examen, aproximadamente 5 días después, recibirás un correo electrónico para revisar tus resultados. Si no recibes el correo, no te preocupes; el campus te informará cuando tu certificado esté listo para recoger.</p>
+        <p><strong>CONFIDENCIALIDAD:</strong> Solo el candidato tiene acceso a sus resultados. Ninguna otra persona o área tiene esta información personal y confidencial.</p>
+        <p>Cuando el certificado físico sea enviado al campus, aparecerá en tu acceso a la plataforma (revisa al mes de haber presentado el examen). En ese momento, debes comunicarte con el plantel para agendar una cita de recolección.</p>
         <p>
+            <a href="https://lvsihmx.github.io/certificadoih/img/reielts.pdf" class="btn btn-green">VER GUÍA PARA CONSULTAR RESULTADOS</a>
+        </p>
+    </div>
 
-           </p>
+</div>
 
-            <p>
-
-
-            <p>
-<h2><center><u>Sobre la entrega de certificado y resultados para IELTS.</u></center></h2>
-
-<td> 
-<p>	
-	Una vez que hagas el examen a los 5 días aproximadamanete te llegará un correo para revisar los resultados en caso de que no te llegue o se te pase la fecha , no te preocupes, deberas
-	esperar a que el campus te informe que ya puedes pasar por tu certificado.Solo el candidato puede ingresar a ver sus resultados ninguna otra persona o área tiene acceso a esta información personal y confidencial.   
-	</p>	
-	<p>	
-Una vez que tengamos el certificado , se manda al campus para que se puedan titular , este apercerá en su acceso a la plataforma.
-		</p>	
-<p>Una vez que aparezca en el sistema (en caso de que no tengas al acceso al sistema comunicate al mes de haber presentado el examen)debes comunicarte al plantel para agendar cita para recoger el certificado fisico</p>
-
- <p> <a href="https://lvsihmx.github.io/certificadoih/img/reielts.pdf" class="btn btn-green">Guia para consultar resultados</a>
-
-	
 </body>
-
-
-
-
-
+</html>
