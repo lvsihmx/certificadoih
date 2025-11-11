@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro Exitoso</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #6DD5FA, #2980B9);
+        color: #fff;
+    }
+
+    .message-box {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 50px 70px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 1.2s ease-out;
+    }
+
+    .message-box h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .message-box h1 span {
+        font-size: 40px;
+        animation: bounce 1s infinite;
+    }
+
+    .message-box p {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+</head>
+<body>
+    <div class="message-box">
+        <h1><span>✅</span> Registro realizado se validarán tus documentos.</h1>
+        <p>Te llegará un correo de comprobante. Debes estar atent@ a las indicaciones de tu escuela.</p>
+
+        <p>!Gracias!.</p>
+
+    </div>
+</body>
+</html>
