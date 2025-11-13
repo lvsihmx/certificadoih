@@ -185,7 +185,7 @@
             border-left: 5px solid var(--accent-color);
         }
 
-        /* === INICIO CAMBIOS POP-UP === */
+        /* === POPUPS === */
         .popup {
             display: none;
             position: fixed;
@@ -216,29 +216,12 @@
         .popup-content p {
             margin-bottom: 20px;
         }
-        /* === FIN CAMBIOS POP-UP === */
 
         @media (max-width: 768px) {
-            body {
-                padding: 20px 10px;
-            }
-            .container {
-                padding: 20px;
-            }
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .header img {
-                max-width: 60%;
-            }
-            /* === INICIO CAMBIO POPUP RESPONSIVE === */
             .popup-content {
                 width: 90%;
                 max-width: 320px;
             }
-            /* === FIN CAMBIO POPUP RESPONSIVE === */
         }
     </style>
 </head>
@@ -275,7 +258,7 @@
             <p>El pago debe realizarse en una sola exhibición.</p>
             <p style="color: var(--accent-color); font-weight: 700;">Asegúrate de guardar tu comprobante de pago.</p>
             
-            <!-- === INICIO CAMBIO POP-UP === -->
+            <!-- Popup del botón de pago -->
             <button class="btn btn-green" id="btnPago">IR AL LINK DE PAGO</button>
 
             <div class="popup" id="popup">
@@ -285,7 +268,6 @@
                     <button class="btn btn-green" id="btnAceptar">Aceptar</button>
                 </div>
             </div>
-            <!-- === FIN CAMBIO POP-UP === -->
         </div>
 
         <div class="step-card">
@@ -314,7 +296,7 @@
                 <td>IELTS</td>
                 <td>$ 5,760.00</td>
                 <td>Del 10 al 17 de noviembre del 2025: $ 5,760.00</td>
-                <td>segunda o tercer semana de diciembre. (Sujeta a cambios. La fecha exacta se notifica por correo y WhatsApp tras confirmar la cantidad de candidatos).</td>
+                <td>Segunda o tercer semana de diciembre. (Sujeta a cambios. La fecha exacta se notifica por correo y WhatsApp tras confirmar la cantidad de candidatos).</td>
             </tr>
         </tbody>
     </table>
@@ -357,44 +339,35 @@
 
 </div>
 
-
-
-
-
-
-
-
+<!-- === POPUP AUTOMÁTICO === -->
+<div class="popup" id="popupAuto">
+    <div class="popup-content">
+        <h3>🎁 Promoción Especial</h3>
+        <p>Haz tu pago del <strong>13 al 17 de Noviembre</strong> y recibe un <strong>cupón de descuento aplicable solo en examen IELTS.</strong>.<br>
+        Envía mensaje de WhatsApp al <strong>5569316461</strong>.</p>
+        <button class="btn btn-green" id="btnCerrarAuto">Aceptar</button>
+    </div>
 </div>
 
-<!-- === INICIO SCRIPT POP-UP === -->
+<!-- === SCRIPT POPUPS === -->
 <script>
+    // Popup del botón de pago
     const btnPago = document.getElementById('btnPago');
     const popup = document.getElementById('popup');
     const btnAceptar = document.getElementById('btnAceptar');
     const pagoLink = "https://pay.ihmexico.mx/servicios/universidad-humanitas/";
 
-    btnPago.addEventListener('click', () => {
-        popup.style.display = 'flex';
-    });
+    btnPago.addEventListener('click', () => popup.style.display = 'flex');
+    btnAceptar.addEventListener('click', () => window.location.href = pagoLink);
+    window.addEventListener('click', e => { if (e.target === popup) popup.style.display = 'none'; });
 
-    btnAceptar.addEventListener('click', () => {
-        window.location.href = pagoLink;
-    });
-
-    // Cierra el pop-up al hacer clic fuera del contenido
-    window.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            popup.style.display = 'none';
-        }
-    });
+    // Popup automático
+    const popupAuto = document.getElementById('popupAuto');
+    const btnCerrarAuto = document.getElementById('btnCerrarAuto');
+    window.addEventListener('load', () => { popupAuto.style.display = 'flex'; });
+    btnCerrarAuto.addEventListener('click', () => { popupAuto.style.display = 'none'; });
+    window.addEventListener('click', e => { if (e.target === popupAuto) popupAuto.style.display = 'none'; });
 </script>
-<!-- === FIN SCRIPT POP-UP === -->
 
 </body>
 </html>
-
-
-
-
-
-
