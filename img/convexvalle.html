@@ -187,7 +187,7 @@
             border-left: 5px solid var(--accent-color);
         }
 
-        /* === POP-UP === */
+        /* === POP-UP EXISTENTE === */
         .popup {
             display: none;
             position: fixed;
@@ -210,13 +210,33 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .popup-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
+        /* === NUEVO POPUP CON ZOOM === */
+        #popupCupon {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
         }
 
-        .popup-content p {
-            margin-bottom: 20px;
+        #popupCupon .popup-content {
+            animation: zoomIn 0.35s ease;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.4); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (max-width: 768px) {
@@ -242,6 +262,16 @@
     </style>
 </head>
 <body>
+
+<!-- === NUEVO POPUP DE CUPÓN === -->
+<div id="popupCupon">
+    <div class="popup-content">
+        <h3>🎁Aprovecha este cupón de descuento por tiempo limitado.</h3>
+        <p><strong>YZCKJ46X</strong></p>
+        <button class="btn btn-green" id="btnCerrarCupon">Aceptar</button>
+    </div>
+</div>
+
 
 <div class="container">
 
@@ -278,9 +308,6 @@
                 <div class="popup-content">
                     <h3>Atención</h3>
                     <p>Cuando realices el pago, regresa a este link para tu registro.</p>
-
-
-                    
                     <button class="btn btn-green" id="btnAceptar">Aceptar</button>
                 </div>
             </div>
@@ -296,15 +323,14 @@
             <a href="https://script.google.com/macros/s/AKfycbxFK1bXjupRcsU7DH5rubQlb-xUNDA6m6g9e-Z1az1BzFpHtcHGFusR9Zm3tPcTN93B/exec" class="btn btn-green" target="_blank">Da clic para iniciar registro.</a>
         </div>
     </div>
+
     <h2 class="section-header">Entrega de Certificado y Resultados (IELTS)</h2>
+
     <div class="results-section">
 
         <p>Aproximadamente 2 días hábiles después recibirás un correo para revisar tus resultados. Si no recibes el correo, podrás recoger tu certificado en IH condesa (donde presentaste el examen).</p>
 
-    
-
         <p><strong>CONFIDENCIALIDAD:</strong> Solo el candidato tiene acceso a sus resultados. Ninguna otra persona o área tiene esta información personal y confidencial.</p>
-
 
         <p>
             <a href="https://lvsihmx.github.io/certificadoih/img/reielts.pdf" class="btn btn-green" target="_blank">VER GUÍA PARA CONSULTAR RESULTADOS</a>
@@ -324,19 +350,25 @@
     });
 
     btnAceptar.addEventListener('click', () => {
-        window.open(pagoLink, "_blank"); // ABRE EN OTRA PESTAÑA
+        window.open(pagoLink, "_blank");
     });
 
-    // Cierra el pop-up al hacer clic fuera
     window.addEventListener('click', (e) => {
         if (e.target === popup) {
             popup.style.display = 'none';
         }
     });
+
+    /* === CERRAR NUEVO POPUP === */
+    document.getElementById("btnCerrarCupon").addEventListener("click", () => {
+        document.getElementById("popupCupon").style.display = "none";
+    });
 </script>
 
 </body>
 </html>
+
+
 
 
 
